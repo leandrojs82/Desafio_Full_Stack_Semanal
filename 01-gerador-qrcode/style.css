@@ -1,0 +1,98 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f2f5;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Container principal (Cartão) */
+.container {
+    background: #ffffff;
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    max-width: 450px;
+    text-align: center;
+}
+
+h2 {
+    margin-bottom: 8px;
+    color: #333333;
+    font-size: 24px;
+}
+
+p.subtitle {
+    color: #666666;
+    font-size: 14px;
+    margin-bottom: 24px;
+}
+
+.input-group {
+    margin-bottom: 16px;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    font-size: 14px;
+    color: #444444;
+    margin-bottom: 6px;
+    font-weight: 600;
+}
+
+input[type="text"], select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #dcdcdc;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+input[type="text"]:focus, select:focus {
+    border-color: #2980b9;
+}
+
+button {
+    width: 100%;
+    background-color: #2980b9;
+    color: #FFFFFF;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #1f618d;
+}
+
+/* Estilo específico caso queira diferenciar o botão de baixar */
+#botao-baixar {
+    background-color: #27ae60;
+    margin-top: 15px;
+}
+
+#botao-baixar:hover {
+    background-color: #1e8449;
+}
+
+#qrcode {
+    margin-top: 24px;
+    display: flex;
+    justify-content: center;
+}

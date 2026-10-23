@@ -1,0 +1,11 @@
+id,descricao,categoria,valor
+1,Almoco,Alimentacao,25.00
+2,Onibus,Transporte,5.50
+3,Caderno,Estudos,18.00
+4,Cafe,Alimentacao,8.00
+5,Metro,Transporte,5.50
+6,Livro,Estudos,32.00
+7,Lanche,,12.00
+8,Suco,Alimentacao,
+9,Onibus,Transporte,5.50
+3,Caderno,Estudos,18.00
