@@ -2,13 +2,13 @@
 
 Repositório de estudos com projetos práticos desenvolvidos semanalmente para aprender programação, registrar minha evolução e construir um portfólio.
 
-Cada semana apresenta um problema, uma solução e os conhecimentos praticados. Os três primeiros projetos são um gerador de QR Code para o navegador, um analisador de despesas em Python e uma API de ideias com Java, Spring Boot e PostgreSQL.
+Cada semana apresenta um problema, uma solução e os conhecimentos praticados. Os projetos incluem um gerador de QR Code, uma análise de despesas em Python, uma API de ideias em Java e uma análise de empréstimos com SQL.
 
 ## O que significa o desafio?
 
 **Full Stack** é o desenvolvimento que envolve a interface utilizada pelas pessoas (**front-end**), o processamento no servidor (**back-end**) e a integração com dados e serviços.
 
-Neste repositório, o nome representa o objetivo da trilha de aprendizado. Cada projeto exercita uma parte desse caminho. A primeira semana trabalha front-end; a segunda trabalha programação e análise de dados; a terceira introduz back-end, API REST e persistência em PostgreSQL. Os projetos têm escopos independentes e praticam competências complementares.
+Neste repositório, o nome representa o objetivo da trilha de aprendizado. Cada projeto exercita uma parte desse caminho. A primeira semana trabalha front-end. A segunda introduz análise de dados com Python. A terceira pratica API REST e persistência em PostgreSQL. A quarta usa SQL para analisar os dados diretamente no banco. Os projetos têm escopos independentes e praticam competências complementares.
 
 **Semanal** representa a proposta de aprender por meio de pequenas entregas, com um projeto por semana e documentação dos aprendizados.
 
@@ -19,6 +19,7 @@ Neste repositório, o nome representa o objetivo da trilha de aprendizado. Cada 
 | 01 | [Gerador de QR Code](01-gerador-qrcode/README.md) | HTML, CSS, JavaScript e QRCode.js | Página para gerar códigos a partir de texto ou URL e baixar a imagem em PNG |
 | 02 | [Analisador de Despesas](02-analise-despesas/README.md) | Python, pandas e matplotlib | Leitura e limpeza de CSV, cálculo de indicadores e gráfico por categoria |
 | 03 | [Caixa de Ideias](03-caixa-de-ideias/README.md) | Java 21, Spring Boot, Spring Data JPA, Jakarta Validation e PostgreSQL | API REST para cadastrar, listar e consultar ideias, com validação e persistência |
+| 04 | [Empréstimos de uma Biblioteca](#semana-04--empréstimos-de-uma-biblioteca) | SQL e PostgreSQL | Contagens de empréstimos totais e em aberto por categoria |
 
 ## Semana 01 — Gerador de QR Code
 
@@ -162,6 +163,37 @@ Essas verificações foram manuais; não foi criada uma suíte de testes automat
 
 Organização dos pacotes `model`, `dto`, `repository` e `controller`; injeção de dependências pelo construtor; mapeamento de rotas; validação de requisições; respostas HTTP; persistência com JPA e PostgreSQL; e configuração de Java 21 por sessão para manter Java 11 como padrão para o trabalho.
 
+## Semana 04 — Empréstimos de uma Biblioteca
+
+Um exercício de análise de dados em SQL. A tabela `emprestimo` reúne 12 empréstimos fictícios, registrados de 2 a 7 de novembro de 2026. Cada linha contém um identificador gerado pelo PostgreSQL, a categoria, a data do empréstimo e a indicação de devolução.
+
+### Resultados
+
+| Categoria | Total de empréstimos | Em aberto |
+| --- | ---: | ---: |
+| Tecnologia | 5 | 3 |
+| Literatura | 4 | 2 |
+| História | 3 | 1 |
+| **Total** | **12** | **6** |
+
+Metade dos empréstimos está em aberto. Tecnologia lidera nas duas contagens. A base não registra o prazo de devolução, então os registros em aberto não permitem identificar atrasos. Para medir a duração dos empréstimos encerrados, seria necessário registrar a data da devolução.
+
+### Como executar
+
+Conecte-se a um banco PostgreSQL local para o exercício. Com a tabela ainda por criar, execute os scripts na ordem abaixo.
+
+| Ordem | Script | O que faz |
+| ---: | --- | --- |
+| 1 | [estrutura.sql](04-analise-de-ddos-iniciante/estrutura.sql) | Cria a tabela com chave primária, campos obrigatórios e indicador booleano de devolução |
+| 2 | [dados.sql](04-analise-de-ddos-iniciante/dados.sql) | Insere os 12 registros fictícios |
+| 3 | [consultas.sql](04-analise-de-ddos-iniciante/consultas.sql) | Lista os empréstimos por data e ID e calcula as contagens gerais e por categoria |
+
+Execute a carga uma vez para evitar registros duplicados. As consultas podem ser executadas novamente sobre a mesma carga.
+
+### Aprendizados
+
+Criação de tabela e inserção de dados no PostgreSQL. Uso de `ORDER BY` para ordenar, `WHERE` para filtrar e `COUNT(*)` com `GROUP BY` para comparar categorias. A soma das categorias foi comparada com as contagens gerais.
+
 ## Organização do repositório
 
 ```text
@@ -177,16 +209,19 @@ Desafio_Full_Stack_Semanal/
 │   ├── analise.py
 │   ├── despesas.csv
 │   └── gastos_por_categoria.png
-└── 03-caixa-de-ideias/
-    ├── README.md
-    ├── pom.xml
-    ├── mvnw
-    ├── mvnw.cmd
-    ├── .mvn/
-    └── src/
+├── 03-caixa-de-ideias/
+│   ├── README.md
+│   ├── pom.xml
+│   ├── mvnw
+│   ├── mvnw.cmd
+│   ├── .mvn/
+│   └── src/
+└── 04-analise-de-ddos-iniciante/
+    ├── estrutura.sql
+    ├── dados.sql
+    └── consultas.sql
 ```
 
 ## Continuidade
 
 As próximas semanas podem ser adicionadas em novas pastas numeradas. A proposta é manter os projetos anteriores disponíveis e atualizar a tabela de entregas com os novos aprendizados.
-
